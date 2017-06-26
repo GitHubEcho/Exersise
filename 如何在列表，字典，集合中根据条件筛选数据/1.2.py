@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python2
 #coding:utf-8
 """列表中筛选数据"""
 from random import randint
