@@ -9,7 +9,7 @@ for n in data:
 
 print(res)
 
-"""列表筛选数据"""
+"""列表筛选数据 """
 from random import randint
 data = [randint(-10,10)for _ in xrange(10)]
 print(data)
