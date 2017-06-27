@@ -27,7 +27,7 @@ print [x for x in data if x >= 0]
 # 2.lambda 是一个表达式，而def是一个语句。
 """
 
-"""字典筛选数据"""
+"""字典筛选数据 """
 from random import randint
 dic = {x: randint(60,100) for x in xrange(1,21)}
 print dic
