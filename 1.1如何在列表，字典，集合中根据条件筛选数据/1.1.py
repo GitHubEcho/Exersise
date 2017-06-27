@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python2
 #coding:utf-8
 """迭代方式输出"""
 data = [1,5,-3,-2,6,0,9]
