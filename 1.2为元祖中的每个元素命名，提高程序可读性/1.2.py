@@ -18,7 +18,7 @@ print student[1]
 '''
 //C语言解决办法
 
-①宏定义
+①宏定 义
 #define NAME 0
 #define AGE 1
 
