@@ -5,7 +5,7 @@
 with open('test.txt') as f:
      print f.read().count('o')
 
-"""统计字符 """
+"""统计字符"""
 res={}
 with open('test.txt') as a:
     for s in a.read():
