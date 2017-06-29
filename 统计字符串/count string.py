@@ -1,5 +1,6 @@
 #/usr/bin/env python2
 #coding:utf-8
+
 """统计某个字符"""
 with open('test.txt') as f:
      print f.read().count('o')
