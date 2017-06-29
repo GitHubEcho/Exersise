@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 import os
 
+"这是说明文档"
+
 print('当前进程:%s 启动中 ....' % os.getpid())
 pid = os.fork()
 if pid == 0:
