@@ -8,7 +8,7 @@
  2.用户输入密码错误三次时，加入黑名单（文件夹）
 
 """
-
+#用户密码认证，成功返回1
 def sign_in(user,password):
     if username in passwd[0]:
         u = passwd[0].index(username)
@@ -21,7 +21,7 @@ def sign_in(user,password):
     else:
         print "用户名不存在！"
         return 0
-
+#从passwd文件中读入用户名密码，并返回用户名（users）密码（passwds）数组
 def verify():
     users = []
     passwds = []
@@ -38,7 +38,7 @@ def verify():
         #print passwds
     f.close()
     return users,passwds
-
+#从黑名单（blacklist）文件中读取，并返回数组
 def blacklist():
     users = []
     f = open('blacklist','r')
@@ -68,8 +68,8 @@ if __name__ == '__main__':
                 break
             elif count == 2:
                 print '输入超过三次，用户已被锁定'
-                a = open('blacklist','rw')
-                a.write('username')
+                a = open('blacklist','w')
+                a.write('\n'+username)
                 a.close()
             else:
                 print "请再次重新输入"
