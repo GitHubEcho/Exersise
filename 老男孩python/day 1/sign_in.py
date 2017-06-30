@@ -19,7 +19,7 @@ def sign_in(user,password):
             print "密码错误！"
             return 0
     else:
-        print "用户名错误！"
+        print "用户名不存在！"
         return 0
 
 def verify():
@@ -39,19 +39,42 @@ def verify():
     f.close()
     return users,passwds
 
+def blacklist():
+    users = []
+    f = open('blacklist','r')
+    lines = f.readlines()
+    for data in lines :
+        data = data.encode()
+        user = data
+        user = user.strip()
+        users.append(user)
+    f.close()
+    return users
 
 if __name__ == '__main__':
-    username = raw_input("your name :")
-    password = raw_input("your passwd:")
-    # sign_in(username,pw)
     passwd = verify()
-    for x in xrange(2):
-        a = sign_in(username, password)
-        if a != 0 :
+    blacklist = blacklist()
+    #print blacklist
+    count = 0
+    while count < 3:
+        username = raw_input("your name :")
+        password = raw_input("your passwd:")
+        if username in blacklist:
+            print '用户已被锁定，请解绑后登录'
             break
         else:
-            print "请再次重新输入"
-            username = raw_input("your name :")
-            password = raw_input("your passwd:")
+            a = sign_in(username, password)
+            if a != 0 :
+                break
+            elif count == 2:
+                print '输入超过三次，用户已被锁定'
+                a = open('blacklist','rw')
+                a.write('username')
+                a.close()
+            else:
+                print "请再次重新输入"
+        count += 1
+
+
 
 
