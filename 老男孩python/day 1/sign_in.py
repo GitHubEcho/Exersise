@@ -10,21 +10,21 @@
 """
 
 def sign_in(user,passwd):
-    if user in s and passwd in s:
+#    if user in s and passwd in s:
+    pass
 
 def verify():
-
-
-
-
-
-
-
-
-
+    users = []
+    passwds = []
+    with open(passwd,'r') as  f:
+        pw = f.readline()
+    users,passwds = pw.split(',')
+    return users,passwds
 
 
 if __name__ == '__main__':
     username = input("your name :")
     passwd = input("your passwd:")
     sign_in(username,passwd)
+    print __name__
+    print verify()
