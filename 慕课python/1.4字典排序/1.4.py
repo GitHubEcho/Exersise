@@ -9,7 +9,7 @@ from random import randint
 
 """
 #1.使用sorted函数
-d = {x:randint(60,100) for x in "sfadfadfd"}
+d = {x:randint(60,100) for x in "sfadfadfd"}#生成随机列表
 d.keys()   #获取键
 d.values() #获取值
 
