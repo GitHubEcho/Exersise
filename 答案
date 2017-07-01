@@ -1,22 +1,54 @@
 
 1. 已知字符串 a = "aAsmr3idd4bgs7Dlsf9eAF",要求如下
 1.1 请将a字符串的大写改为小写，小写改为大写。
+     a.swapcase()
 
 1.2 请将a字符串的数字取出，并输出成一个新的字符串。
+    ''join([x for x in a if x.isdigit()]) #''join以指定的分隔符生成新的字符串
 
 1.3 请统计a字符串出现的每个字母的出现次数（忽略大小写，a与A是同一个字母），并输出成一个字典。 例 {'a':4,'b':2}
-{x : a.count(x) for x in a}忽略大小写？
+    {x : a.count(x) for x in set(a.lower())}
+    dict{[a,a.count(x) for x in set(a.lower())]}
 
 1.4 请去除a字符串多次出现的字母，仅留最先出现的一个。例 'abcabb'，经过去除后，输出 'abc'
+    a = "aAsmr3idd4bgs7Dlsf9eAF"
+
+    a_list = list(a) #转化为列表，并保存元素顺序
+
+    set_list = list(set(a_list)) #去重
+
+    set_list = set_list.sort(key=a_list.index) 排序传递的是函数
+
+    print ''.jion(set_list)以字符串输出
 
 1.5 请将a字符串反转并输出。例：'abc'的反转是'cba'
-列表转化为字符串？
+①方法一：
+    a = "abc"
+    b = list(a)
+    b.reverse()  #列表的reverse函数没有返回值，会改变列表本身
+    a = ''join(b)#列表转化为字符串
+②方法二：
+    print a[::-1]
 
-1.6 去除a字符串内的数字后，请将该字符串里的单词重新排序（a-z），并且重新输出一个排序后的字符 串。（保留大小写,a与A的顺序关系为：A在a前面。例：AaBb）
+1.6 去除a字符串内的数字后，请将该字符串里的单词重新排序（a-z），并且重新输出一个排序后的字符串。（保留大小写,a与A的顺序关系为：A在a前面。例：AaBb）
+思路：
+    ①先用sorted方法排序，观察排序结果
+    ②把大写字母结果放到a_lower_list = []
+      把小写字母结果放到a_upper_list = []
+    ③迭代小写字母a_lower_list[]表，把如果有相同小写字母表的大写写字母加入到原来的位置
+
 1.7 请判断 'boy'里出现的每一个字母，是否都出现在a字符串里。如果出现，则输出True，否则，则输 出False.
+    思路：集合的里面的数是不重复的，当你往集合中加相同的数是，其长度不会改变
+    a = "aAsmr3idd4bgs7Dlsf9eAF"
+    search = "boy"
+    u = set(a)
+    u.update(list(search))
+    print len(u) == len(set(a))
+
 1.8 要求如1.7，此时的单词判断，由'boy'改为四个，分别是 'boy','girl','bird','dirty'，请判断如上这4个字符串里的每个字母，是否都出现在a字符串里。
+
 1.9 输出a字符串出现频率最高的字母
-sorted(d.items(),key=lambda x:x[1])
+sorted(a.items(),key=lambda x:x[1])
 
 2.在python命令行里，输入import this 以后出现的文档，统计该文档中，"be" "is" "than" 的出现次数。
 
