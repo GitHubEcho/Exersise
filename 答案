@@ -34,11 +34,11 @@
 思路：
     ①先用sorted方法排序，观察排序结果
     ②把大写字母结果放到a_lower_list = []
-      把小写字母结果放到a_upper_list = []
+     把小写字母结果放到a_upper_list = []
     ③迭代小写字母a_lower_list[]表，把如果有相同小写字母表的大写写字母加入到原来的位置
 
 1.7 请判断 'boy'里出现的每一个字母，是否都出现在a字符串里。如果出现，则输出True，否则，则输 出False.
-    思路：集合的里面的数是不重复的，当你往集合中加相同的数是，其长度不会改变
+思路：集合的里面的数是不重复的，当你往集合中加相同的数是，其长度不会改变
     a = "aAsmr3idd4bgs7Dlsf9eAF"
     search = "boy"
     u = set(a)
@@ -46,12 +46,38 @@
     print len(u) == len(set(a))
 
 1.8 要求如1.7，此时的单词判断，由'boy'改为四个，分别是 'boy','girl','bird','dirty'，请判断如上这4个字符串里的每个字母，是否都出现在a字符串里。
+    a = "aAsmr3idd4bgs7Dlsf9eAF"
+    search = 'boy'+'girl'+'bird'+'dirty'
+    u = set(a)
+    u.update(list(set(search)))
+    print len(u) == len(set(a))
 
 1.9 输出a字符串出现频率最高的字母
-sorted(a.items(),key=lambda x:x[1])
+    print sorted([(x ,a.count(x)) for x in set(a)],key = lambda x :x[1])[-1]
+
+    l = [(x ,a.count(x)) for x in set(a)]
+    l.sort(key = lambda x :x[1])
+    print l[-1]
+
+     sort 与 sorted 区别：
+    sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。
+    list 的 sort 方法返回的是对已经存在的列表进行操作，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。
 
 2.在python命令行里，输入import this 以后出现的文档，统计该文档中，"be" "is" "than" 的出现次数。
+    import os
+    m = os.popen('python -m this ').read()  #没有read()之前是一个file对象，之后为字符串对象,可通过type(m)查看
+    m = m.replace('','\n')                  #换去字符串末尾的换行符号'\n'
+    l = m.split(' ')                        #split()通过指定分隔符对字符串进行切片，如果参数num 有指定值，则仅分隔 num 个子字符串 返回指定分隔符字符串列表
+    print [(x, l.count(x)) for x in ['be','is','than']]
 
 3.一文件的字节数为 102324123499123，请计算该文件按照kb与mb计算得到的大小。
+    size = 102324123499123
+    print 'size: %s KB'%(size>>10)
+    print 'size: %s MB'%(size>>20)
+    右位移计算：size = size / 2^10
+    左位移计算：size = size * 2^10
+    位移运算对于单位换算较为方便
 
 4.已知  a =  [1,2,3,6,8,9,10,14,17],请将该list转换为字符串，例如 '123689101417'.
+    print str(a)[1:-1:3]                 #单个数有效
+    print str(a)[1:-1].replace(', ','')  #有效的方法
