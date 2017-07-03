@@ -7,8 +7,6 @@
 
 """
 
-#TODO 程序员的谎言
-#FIXME bug修复
 
 china_map = {
     "华南": {
@@ -56,3 +54,5 @@ china_map = {
     },
 
 }
+print (china_map.keys())
+#sorted()

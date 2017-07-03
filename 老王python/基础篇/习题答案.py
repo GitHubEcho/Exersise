@@ -11,7 +11,7 @@ data_keys = ('bid', 'uid', 'username', 'v_class', 'content', 'img', 'created_at'
 
 keys = {data_keys[k]:k for k in xrange(0,len(data_keys))}
 
-f = linecache.getlines('t.txt')
+f = linecache.getlines('twitter.txt')
 
 lines = [x[1:-1].split('","') for x in f] #拆分
     
