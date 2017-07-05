@@ -12,13 +12,13 @@ def sign_in(user,password):
     if username in passwd[0]:
         u = passwd[0].index(username)
         if password == (passwd[1][u]):
-            print "登录成功！"
+            print ("登录成功！")
             return 1
         else:
-            print "密码错误！"
+            print ("密码错误！")
             return 0
     else:
-        print "用户名不存在！"
+        print ("用户名不存在！")
         return 0
 #从passwd文件中读入用户名密码，并返回用户名（users）密码（passwds）数组
 def verify():
@@ -56,22 +56,22 @@ if __name__ == '__main__':
     #print blacklist
     count = 0
     while count < 3:
-        username = raw_input("your name :")
-        password = raw_input("your passwd:")
+        username = input("your name :")
+        password = input("your passwd:")
         if username in blacklist:
-            print '用户已被锁定，请解绑后登录'
+            print ('用户已被锁定，请解绑后登录')
             break
         else:
             a = sign_in(username, password)
             if a != 0 :
                 break
             elif count == 2:
-                print '输入超过三次，用户已被锁定'
+                print ('输入超过三次，用户已被锁定')
                 a = open('blacklist','w')
                 a.write('\n'+username)
                 a.close()
             else:
-                print "请再次重新输入"
+                print ("请再次重新输入")
         count += 1
 
 

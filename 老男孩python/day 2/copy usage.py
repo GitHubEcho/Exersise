@@ -34,8 +34,8 @@ a = ['name',['saving',0]]
 heqian = a[:]
 heqian[0] = 'heqian'
 heqian[1][1] = 50
-print heqian
+print (heqian)
 
 wife = a[:]
 wife[0] = 'wife'
-print wife
+print (wife)

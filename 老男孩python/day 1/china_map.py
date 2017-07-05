@@ -1,12 +1,11 @@
 #!/usr/bin/env python2
-#coding:utf-8
+# coding:utf-8
 
 """实现省级三级菜单
 思路：
 
 
 """
-
 
 china_map = {
     "华南": {
@@ -54,5 +53,5 @@ china_map = {
     },
 
 }
-print (china_map.keys())
-#sorted()
+print(china_map.keys())
+sorted()
