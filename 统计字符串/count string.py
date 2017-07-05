@@ -3,7 +3,7 @@
 
 """统计某个字符"""
 with open('test.txt') as f:
-     print f.read().count('o')
+     print (f.read().count('o'))
 
 """统计所有字符"""
 res={}
@@ -14,5 +14,5 @@ with open('test.txt') as a:
         #     res[s] += 1
         # else:
         #     res[s] = 1
-print res
+print (res)
 

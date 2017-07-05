@@ -4,7 +4,7 @@ from random import randint
 from collections import Counter
 import re
 
-#案例一：随机序列中[5,6,5,4,...,5,6]中出现次数最高的三个元素
+#案例一：随机列表中[5,6,5,4,...,5,6]中出现次数最高的三个元素
 data = [randint(0,20) for _ in xrange(30)]
 c = dict.fromkeys(data,0)
 for x in data:
