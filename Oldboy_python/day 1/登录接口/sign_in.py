@@ -9,6 +9,11 @@
 """
 #用户密码认证，成功返回1
 def sign_in(user,password):
+    '''
+    :param user:用户名 
+    :param password:密码
+    :return:用户名 密码正确返回1，错误返回0
+    '''
     if username in passwd[0]:
         u = passwd[0].index(username)
         if password == (passwd[1][u]):
@@ -20,8 +25,12 @@ def sign_in(user,password):
     else:
         print ("用户名不存在！")
         return 0
-#从passwd文件中读入用户名密码，并返回用户名（users）密码（passwds）数组
+
 def verify():
+    """
+    从passwd文件中读入用户名密码，并返回用户名（users）密码（passwds）数组
+    :return: 
+    """
     users = []
     passwds = []
     f =  open('passwd','r')
@@ -37,8 +46,12 @@ def verify():
         #print passwds
     f.close()
     return users,passwds
-#从黑名单（blacklist）文件中读取，并返回数组
+
 def blacklist():
+    """
+    文件中读取黑名单（blacklist）
+    :return: username in blacklist 
+    """
     users = []
     f = open('blacklist','r')
     lines = f.readlines()
