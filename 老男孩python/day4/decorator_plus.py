@@ -25,6 +25,7 @@ def auth(auth_type):
 
 def index():
     print("welcome to index page")
+
 @auth(auth_type="local") # home = wrapper()
 def home():
     print("welcome to home  page")
