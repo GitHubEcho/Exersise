@@ -25,8 +25,9 @@ def producer():
     # 因此，在您可以与协程之前，您必须先调用next（）或send（None）将其执行提前到第一个yield表达式
 
     while True:
-        print('已经做好一个包子')
-        time.sleep(3)
+        print('已经做好一个包子'.center(50, '*'))
         A.send("猪肉大葱")
         B.send('猪肉白菜')
+        print('\n')
+        time.sleep(3)
 producer()

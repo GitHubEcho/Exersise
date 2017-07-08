@@ -13,7 +13,7 @@ def auth(auth_type):
                 if user == username and passwd == password:
                     print("\033[32;1mUser has passed authentication\033[0m")
                     res = func(*args, **kwargs)  # from home
-                    print("---after authenticaion ")
+                    print("---after authenticaion ---")
                     return res
                 else:
                     exit("\033[31;1mInvalid username or password\033[0m")
@@ -35,6 +35,6 @@ def home():
 def bbs():
     print("welcome to bbs  page")
 
-index()
+#index()
 print(home()) #wrapper()
-bbs()
+#bbs()
