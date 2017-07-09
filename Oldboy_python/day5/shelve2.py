@@ -2,6 +2,7 @@
 #coding:utf-8
 
 import shelve
+
 with shelve.open('shelve.data') as f:
     print(f.get('test'))
     print(f.get('time'))
