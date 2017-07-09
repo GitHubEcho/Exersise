@@ -1,5 +1,6 @@
 #coding:utf-8
 import copy
+
 a = ['heiqan','liangge','haoge',['HQ','LV'],'wanglun']
 b = copy.deepcopy(a) #深copy
 print(a)
