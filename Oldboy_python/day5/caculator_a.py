@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+#coding:utf-8
 import re
 import functools
 
@@ -21,25 +23,6 @@ def remove_duplicates(formula):
     formula = formula.replace("- -", "+")
     return formula
 
-
-def compute_mutiply_and_dividend(formula):
-    '''算乘除,传进来的是字符串噢'''
-    operators = re.findall("[*/]", formula)
-    calc_list = re.split("[*/]", formula)
-    res = None
-    for index, i in enumerate(calc_list):
-        if res:
-            if operators[index - 1] == "*":
-                res *= float(i)
-            elif operators[index - 1] == "/":
-                res /= float(i)
-        else:
-            res = float(i)
-
-    print("\033[31;1m[%s]运算结果=\033[0m" % formula, res)
-    return res
-
-
 def handle_minus_in_list(operator_list, calc_list):
     '''有的时候把算术符和值分开后,会出现这种情况  ['-', '-', '-'] [' ', '14969037.996825399 ', ' ', '12.0/ 10.0 ']
        这需要把第2个列表中的空格都变成负号并与其后面的值拼起来,恶心死了
@@ -60,7 +43,22 @@ def handle_special_occactions(plus_and_minus_operators, multiply_and_dividend):
             del plus_and_minus_operators[index]
     return plus_and_minus_operators, multiply_and_dividend
 
+def compute_mutiply_and_dividend(formula):
+    '''算乘除,传进来的是字符串噢'''
+    operators = re.findall("[*/]", formula)
+    calc_list = re.split("[*/]", formula)
+    res = None
+    for index, i in enumerate(calc_list):
+        if res:
+            if operators[index - 1] == "*":
+                res *= float(i)
+            elif operators[index - 1] == "/":
+                res /= float(i)
+        else:
+            res = float(i)
 
+    print("\033[31;1m[%s]运算结果=\033[0m" % formula, res)
+    return res
 def compute(formula):
     '''这里计算是的不带括号的公式'''
 

@@ -3,22 +3,42 @@
 import re
 
 def compute_mut_sub(famula):
-    for x in famula:
-        v = re.search(r'[*/]',x)
-        if v:
-            if v
-
-
-
+    """乘除运算"""
+    oporators = re.findall('[*/]',famula)
+    cal_list = re.split('[*/]',famula)
+    res = None
+    for index,x in enumerter(cal_list):
+        if res:
+            if oporators[index - 1] == '*':
+                res *= float(x)
+            elif oporators[index - 1]  == '/':
+                res /= float(x)
+        else:
+            res = float(res)
+    return res
+def compute_add_sub():
+    """加减运算"""
+    oporators = re.findall('[+-]', famula)
+    cal_list = re.split('[+-]', famula)
+    res = None
+    for index, x in enumerter(cal_list):
+        if res:
+            if oporators[index - 1] == '+':
+                res *= float(x)
+            elif oporators[index - 1] == '-':
+                res /= float(x)
+        else:
+            res = float(res)
+    return res
 
 def compute(famula):
     '''计算括号中的结果并返回'''
     famula = famula.strip('()')
     famula = famula.replace(' ','')
-    mut_sub_list = re.split('[+-]',famula)
+    mut_sub_list = re.split('[+-]',famula)  #5+6+6/7*c
+
     compute_mut_and_sub = compute_mut_sub(mut_sub_list)
     pass
-
 
 
 def cal(expression):

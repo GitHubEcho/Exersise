@@ -1,19 +1,15 @@
-#!/usr/bin/env python3
+#!/bin/env python3
 #coding:utf-8
-with open('test.xml') as f:
-    print(f.readlines())
-    lines_ = f.readlines()
-    print(type(lines_))
+import re
 
-    lines = (line.strip() for line in f)
-    print(type(lines))
-    for line in lines:
-         print(line)
+s = '8+6/4*+9*7'
+re.sub('(^-)','/(0-./)',s)
+Out[9]:
+'/(0-./)8+6/-4*+9*7'
+re.sub('(^-)','(0-./',s)
+Out[10]:
+'(0-./8+6/-4*+9*7'
+re.sub('(^-)','(0-',s)
+Out[11]:
+'(0-8+6/-4*+9*7'
 
-'''
-笔记
-readline读取文件的一行，注意有文件的游标
-lines是一个generater
-lines_是一个list
-
-'''
