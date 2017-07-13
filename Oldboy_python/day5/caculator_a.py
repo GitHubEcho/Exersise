@@ -38,7 +38,7 @@ def compute_mutiply_and_dividend(formula):
 
     print("\033[31;1m[%s]运算结果=\033[0m" % formula, res)
     return res
-compute_mutiply_and_dividend('5*56/5*6')
+
 
 def handle_minus_in_list(operator_list, calc_list):
     '''有的时候把算术符和值分开后,会出现这种情况  ['-', '-', '-'] [' ', '14969037.996825399 ', ' ', '12.0/ 10.0 ']
