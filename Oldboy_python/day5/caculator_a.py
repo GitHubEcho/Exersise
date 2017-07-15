@@ -3,16 +3,16 @@
 import re
 import functools
 
-
-def minus_operator_handler(formula):
-    '''处理一些特殊的减号运算'''
-    minus_operators = re.split("-", formula)
-    calc_list = re.findall("[0-9]", formula)
-    if minus_operators[0] == '':  # 第一值肯定是负号
-        calc_list[0] = '-%s' % calc_list[0]
-    res = functools.reduce(lambda x, y: float(x) - float(y), calc_list)
-    print("\033[33;1m减号[%s]处理结果:\033[0m" % formula, res)
-    return res
+#
+# def minus_operator_handler(formula):
+#     '''处理一些特殊的减号运算'''
+#     minus_operators = re.split("-", formula)
+#     calc_list = re.findall("[0-9]", formula)
+#     if minus_operators[0] == '':  # 第一值肯定是负号
+#         calc_list[0] = '-%s' % calc_list[0]
+#     res = functools.reduce(lambda x, y: float(x) - float(y), calc_list)
+#     print("\033[33;1m减号[%s]处理结果:\033[0m" % formula, res)
+#     return res
 
 
 def remove_duplicates(formula):
@@ -57,7 +57,7 @@ def compute_mutiply_and_dividend(formula):
         else:
             res = float(i)
 
-    print("\033[31;1m[%s]运算结果=\033[0m" % formula, res)
+    #print("\033[31;1m[%s]运算结果=\033[0m" % formula, res)
     return res
 def compute(formula):
     '''这里计算是的不带括号的公式'''
@@ -89,7 +89,7 @@ def compute(formula):
                 total_res -= float(item)
         else:
             total_res = float(item)
-    print("\033[32;1m[%s]运算结果:\033[0m" % formula, total_res)
+    #print("\033[32;1m[%s]运算结果:\033[0m" % formula, total_res)
     return total_res
 
 
@@ -112,5 +112,5 @@ def calc(formula):
 
 if __name__ == '__main__':
     # res = calc("1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )")
-    res = calc(
-        "1 - 2 * ( (60-30 +(-9-2-5-2*3-5/3-40*4/2-3/5+6*3) * (-9-2-5-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )")
+    res = calc('1 - 2 * ( (60-30 +(-40/5) * (9-2*5/3 + 7 /3*99/4*2998 +10 * 568/14 )) - (-4*3)/ (16-3*2) )'
+        )
