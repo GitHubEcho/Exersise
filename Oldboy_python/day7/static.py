@@ -3,7 +3,7 @@
 
 
 class animal :
-    name = 'xiaohe'
+    #name = 'xiaohe'
     def __init__(self,name,species,age):
         self.name = name
         self.species = species
@@ -19,11 +19,11 @@ class animal :
 
     @drink.setter
     def drink(self,status):
-        print('%s is setted '%status)
+        self.name = status
 
     @drink.deleter
     def drink(self):
-        print('drink is deleted')
+        del self.name
 
     @classmethod
     def sleep(cls):
@@ -35,7 +35,7 @@ A.eat(A)
 A.drink = 'heqian'
 A.drink
 del A.drink
-A.drink
+print(A.species)
 A.sleep()
 
 
