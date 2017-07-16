@@ -2,17 +2,14 @@
 #coding:utf-8
 import re
 
-
-
 def compute(famula):
 
     pass
 
-
 def cal(expression):
     parenthesise_flag = True
     while parenthesise_flag:
-        m = re.search(r'\([^()]+\)',s).group() #取出最里层函数
+        m = re.search(r'\([^()]+\)',s).group() #取出最里层括号，计算里面的值
         if m :
             res = compute(m)
             expression = expression.replace(m,str(res))
