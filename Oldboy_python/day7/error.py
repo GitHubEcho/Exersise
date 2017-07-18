@@ -11,4 +11,4 @@ class Exception(Exception):
 try:
     raise Exception('我的异常')  #raise触发异常
 except Exception as e:
-    print e
+    print (e)

@@ -28,8 +28,3 @@ people = type('people', (object,), {'func': func,'__init__':__init__})
 B = people()
 print(B.name)
 B.func()
-
-'''
-
-
-'''

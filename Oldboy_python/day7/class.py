@@ -8,7 +8,7 @@ class man:
     def __init__(self):
         self.name = 'xiaoxiao'
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs): #ython中的可变参数，*args表示任何多个无名参数，它是一个tuple；**kwargs表示关键字参数，它是一个dict
         print(self.name)
 
 B = man()
