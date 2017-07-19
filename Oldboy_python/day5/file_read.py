@@ -11,7 +11,6 @@ with open('test.xml') as f:
          print(line)
 
 '''
-笔记
 readline读取文件的一行，注意有文件的游标
 lines是一个generater
 lines_是一个list

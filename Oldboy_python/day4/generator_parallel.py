@@ -17,19 +17,20 @@ def consumer(name):
 # c.__next__()
 # c.send('hh')
 
-def producer():
-    A = consumer('xiaoxiao')
-    B = consumer('heqian')
-    A.__next__()
-    B.__next__()
     # 因为生成器迭代器在生成器函数体的顶部开始执行，所以在生成器刚刚创建时，没有yield表达式来接收值。
     # 因此，当生成器迭代器刚刚启动时，禁止使用非无参数调用send（），如果发生这种情况，则会引发TypeError（可能是因为某种逻辑错误）。
     # 因此，在您可以与协程之前，您必须先调用next（）或send（None）将其执行提前到第一个yield表达式
-
+def producer():
     while True:
         print('已经做好一个包子'.center(50, '*'))
         A.send("猪肉大葱")
         B.send('猪肉白菜')
         print('\n')
         time.sleep(3)
+
+
+A = consumer('xiaoxiao')
+B = consumer('heqian')
+A.__next__()
+B.__next__()
 producer()

@@ -3,16 +3,16 @@
 import re
 import functools
 
-#
-# def minus_operator_handler(formula):
-#     '''处理一些特殊的减号运算'''
-#     minus_operators = re.split("-", formula)
-#     calc_list = re.findall("[0-9]", formula)
-#     if minus_operators[0] == '':  # 第一值肯定是负号
-#         calc_list[0] = '-%s' % calc_list[0]
-#     res = functools.reduce(lambda x, y: float(x) - float(y), calc_list)
-#     print("\033[33;1m减号[%s]处理结果:\033[0m" % formula, res)
-#     return res
+
+def minus_operator_handler(formula):
+    '''处理一些特殊的减号运算'''
+    minus_operators = re.split("-", formula)
+    calc_list = re.findall("[0-9]", formula)
+    if minus_operators[0] == '':  # 第一值肯定是负号
+        calc_list[0] = '-%s' % calc_list[0]
+    res = functools.reduce(lambda x, y: float(x) - float(y), calc_list)
+    print("\033[33;1m减号[%s]处理结果:\033[0m" % formula, res)
+    return res
 
 
 def remove_duplicates(formula):
