@@ -3,7 +3,7 @@
 
 import time,threading
 '''
-计算使用线程结束时的总时间
+把子线程变成守护进程，程序不用等待线程执行完毕而结束
 '''
 def run(n):
     print('task',n)
@@ -11,14 +11,12 @@ def run(n):
 
 start_time = time.time()
 
-t_jobs = []
+
 for i in range(50):
     t = threading.Thread(target=run,args=(i,))
+    t.setDaemon(True)
     t.start()
-    t_jobs.append(t)
 
-for x in t_jobs:
-    t.join()
 
 
 print('all threading is finished'.center(50,'-'))
