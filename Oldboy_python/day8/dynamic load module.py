@@ -15,6 +15,5 @@ print(B.get_name())
 
 '''
 __import__方法是解释器执行代码时使用的方法，官方不推荐使用
-importlib是
-
+importlib
 '''

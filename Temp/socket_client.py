@@ -1,5 +1,5 @@
-__author__ = "Alex Li"
-
+#!/usr/bin/env python3
+#coding:utf-8
 import socket
 
 HOST = 'localhost'  # The remote host

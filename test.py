@@ -1,16 +1,12 @@
-import time
-for n in (100000, 200000, 300000, 400000):
-    data = b'x'*n
-    start = time.time()
-    b = data
-    while b:
-        b = b[1:]
-    print('bytes', n, time.time()-start)
+#!/usr/bin/env python3
+#coding:utf-8
 
-for n in (100000, 200000, 300000, 400000):
-    data = b'x'*n
-    start = time.time()
-    b = memoryview(data)
-    while b:
-        b = b[1:]
-    print('memoryview', n, time.time()-start)
+import os
+def Test3(rootDir, level=1):
+    if level==1: print (rootDir )
+    for lists in os.listdir(rootDir):
+        path = os.path.join(rootDir, lists)
+        print ('│  '*(level-1)+'│--'+lists )
+        if os.path.isdir(path):
+            Test3(path, level+1)
+

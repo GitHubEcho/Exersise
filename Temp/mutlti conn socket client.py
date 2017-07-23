@@ -7,11 +7,11 @@ import sys
 messages = [ b'This is the message. ',
              b'It will be sent ',
              b'in parts.',
-             ]
-server_address = ('192.168.16.130', 9998)
+            ]
+server_address = ('127.0.0.1', 8000)
 
 # Create a TCP/IP socket
-socks = [ socket.socket(socket.AF_INET, socket.SOCK_STREAM) for i in range(11000)]
+socks = [ socket.socket(socket.AF_INET, socket.SOCK_STREAM) for i in range(500)]
 print(socks)
 # Connect the socket to the port where the server is listening
 print('connecting to %s port %s' % server_address)
