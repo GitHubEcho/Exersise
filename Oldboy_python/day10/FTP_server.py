@@ -17,17 +17,12 @@ message_queues = {} #创建字典{套接字对象:消息队列}
 
 while inputs :
     readable,writable,exceptional = select.select(inputs,outputs,inputs)
-    #select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件描述符便会被内核修改标志位，
-    #使得进程可以获得这些文件描述符从而进行后续的读写操作。
-    # readable:返回活动的文件描述符
-    # writable:下一次监视时，返回上次放入的数据
 
-    #print(readable,writable,exceptional)
     if not (readable or writable or exceptional):
         print ("Time out ! ")
         break
 
-    #处理readable
+    #handler readable
     for r in readable:
         if r is server :
             conn,addr = server.accept()
@@ -39,6 +34,8 @@ while inputs :
             data = r.recv(1024)
             if  data:
                 print('%s >> %s' % (r.getpeername(), data))
+
+
                 message_queues[r].put(data)
                 if r not in outputs:
                     outputs.append(r)
@@ -49,7 +46,8 @@ while inputs :
                 inputs.remove(r)
                 r.close()
                 del message_queues[r]
-    #处理writable
+
+    #handler writable
     for w in writable:
         try:
             data_to_client = message_queues[w].get_nowait()
@@ -60,7 +58,7 @@ while inputs :
             print("sending msg to [%s]" % w.getpeername()[0] )
             w.send(data_to_client)
 
-    #处理exceptonal
+    #handler exceptonal
     for e in exceptional:
         print("handling exception for ", e.getpeername())
         inputs.remove(e)

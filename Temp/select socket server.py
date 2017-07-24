@@ -39,7 +39,7 @@ while True:
             # print("send done....")
 
     for w in writeable: #要返回给客户端的连接列表
-        data_to_client = msg_dic[w].get()
+        data_to_client = msg_dic[w].get_()
         w.send(data_to_client) #返回给客户端源数据
 
         outputs.remove(w) #确保下次循环的时候writeable,不返回这个已经处理完的连接了

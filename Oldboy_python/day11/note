@@ -1,0 +1,4 @@
+RabbitMQ 消息队列
+       进程间消息交互，可以通过socket还可以通过消息队
+    erlang
+    port 3926
