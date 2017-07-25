@@ -3,36 +3,22 @@
 
 import pickle,os,paramiko,threading,re
 
-def print_group(choose_group):
-    '''打印组的字典的第一个值，即主机IP'''
-    filename = 'hostgroup/'+choose_group
-    #print(filename)
-    with open(filename,'rb') as f :
-        dic = pickle.load(f)
-    print('%s'.center(40, '-') % choose_group)
-    host_list = []
-    for key in dic.keys():
-        print(key)
-        host_list.append(key)
-    return dic,host_list
 
 def SSH(command,hostname,username,password):
     ssh = paramiko.SSHClient()
-
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
         ssh.connect(hostname= hostname, port=22, username=username, password=password)
-        print('host %s runing result'.center(40, '-') % host)
-    except Exception:
-        print('time out! %s is offline' % host)
+        print('\033[32;0m host %s runing result\033[0m'.center(40, '-') % hostname)
+        stdin, stdout, stdrr = ssh.exec_command(command)
 
-    stdin, stdout, stdrr = ssh.exec_command(command)
-
-    res, err = stdout.read(), stdrr.read()
-
-    result = res if res else err
-    print(result.decode())
-    ssh.close()
+        res, err = stdout.read(), stdrr.read()
+        result = res if res else err
+        print(result.decode())
+        ssh.close()
+    except Exception as e:
+        print('\033[31;1m time out! %s error is %s\033[0m' % (hostname,e))
 
 def SFTP(command,hostname,username,password):
     transport = paramiko.Transport((hostname, 22))
@@ -46,8 +32,21 @@ def SFTP(command,hostname,username,password):
 
     if 'get' == command_list[0]:
         sftp.get(command_list[1], command_list[2])
-    print('file transfer success')
+    print('\033[32;0mfile transfer success\033[0m')
     transport.close()
+
+def print_group(choose_group):
+    '''打印组的字典的第一个值，即主机IP'''
+    filename = 'hostgroup/'+choose_group
+    #print(filename)
+    with open(filename,'rb') as f :
+        dic = pickle.load(f)
+    print('%s'.center(40, '-') % choose_group)
+    host_list = []
+    for key in dic.keys():
+        print(key)
+        host_list.append(key)
+    return dic,host_list
 
 if __name__ == '__main__':
     group  = os.listdir('hostgroup')
