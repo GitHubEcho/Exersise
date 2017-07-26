@@ -20,7 +20,7 @@ def callback(ch, method, properties, body):
 channel.basic_qos(prefetch_count=2)  #当队列中还有prefetch_count消息数量时发给其他接收端
 
 channel.basic_consume(callback,
-                      queue='hello1',
+                      queue='hello',
                       #no_ack=True  #不确认，处理结果不用不返回rabbitmq-server确认，
                       #如果不确认，在客户端断开时，把消息当成新的消息发送给下一个接收者
                      )

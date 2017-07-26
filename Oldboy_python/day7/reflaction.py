@@ -25,6 +25,6 @@ setattr(obj, 'show', lambda num: num + 1)
 
 # #### 删除成员 ####
 delattr(obj, 'name')
-print(obj.name)
+
 delattr(obj, 'func')
 

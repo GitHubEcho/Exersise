@@ -1,4 +1,7 @@
-RabbitMQ 消息队列
+RabbitMQ 消息队列（消息的传递）
        进程间消息交互，可以通过socket还可以通过消息队
     erlang
     port 3926
+redis数据的共享（只有一份）
+    json pickle 共享的硬盘数据
+    但是redis通过再启动一个服务（或进程），其与共享数据的双方通过套接字通信，来实现内存共享数据
