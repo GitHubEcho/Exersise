@@ -9,6 +9,6 @@ client.connect(('127.0.0.1',7788))
 while True:
     data = input('>>')
     client.send(data.encode('utf-8'))
-    #msg = client.recv(1024)
-    #print(msg.decode())
+    msg = client.recv(1024)
+    print(msg.decode())
 client.close()
